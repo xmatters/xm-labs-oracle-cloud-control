@@ -1,0 +1,18 @@
+<EntityInstanceList xmlns="http://www.oracle.com/EnterpriseGridControl/SelfUpdateManifest/">
+    <EntityInstance xmlns="http://www.oracle.com/EnterpriseGridControl/SelfUpdateManifest/"
+        EntityTypeVersion="12.1.0.1.0" EntityType="core_connector" Maturity="PRODUCTION"
+        Vendor="Oracle" PluginID="oracle.sysman.core">
+	<Description><![CDATA[ xMatters Connector 12.1.0.1.0 ]]></Description>
+        <AttributeList>
+            <Version>12.1.0.1.0</Version>
+            <Attribute Name="connector_type" Value="xMatters Connector" Label="xMatters Connector"/>
+            <Attribute Name="connector_category" Value="EventConnector" Label="Event Connector"/>
+        </AttributeList>
+        <Readme><![CDATA[ xMatters Intelligent Communication ]]></Readme>
+        <DependsOn/>
+        <ArchiveList>
+            <Archive Filename="xmatters_connector.jar" IsMDS="false"/>
+        </ArchiveList>
+        <CustomData></CustomData>
+    </EntityInstance>
+</EntityInstanceList>

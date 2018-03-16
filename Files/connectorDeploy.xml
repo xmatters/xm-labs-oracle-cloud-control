@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ManagementConnector xmlns="http://xmlns.oracle.com/sysman/connector">
+  <Name>xMatters Connector</Name>
+  <Version>12.1.0.1.0</Version>
+  <EMCompatibleVersion>12.1.0.1.0</EMCompatibleVersion>
+  <Description>xMatters Intelligent Communications</Description>
+  <Category>EventConnector</Category>
+  <NewTargetType>
+    <TargetTypeName>xmatters</TargetTypeName>
+    <TargetTypeDisplayName>xMatters</TargetTypeDisplayName>
+    <DefaultTargetName>xMatters</DefaultTargetName>
+    <DefaultTargetDisplayName>xMatters</DefaultTargetDisplayName>
+  </NewTargetType>
+  <Service>
+    <Method>createEvent</Method>
+    <WebServiceEndpoint>
+      <![CDATA[]]>
+    </WebServiceEndpoint>
+  </Service>
+  <Service>
+    <Method>updateEvent</Method>
+    <WebServiceEndpoint>
+      <![CDATA[]]>
+    </WebServiceEndpoint>
+  </Service>
+  <TemplateRegistration>
+    <FileName>createEvent_request_xmatters.xsl</FileName>
+    <InternalName>createEvent</InternalName>
+    <TemplateName>Create Event Request</TemplateName>
+    <TemplateType>OutboundXSL</TemplateType>
+    <Description>This is the request xsl file for the createEvent method</Description>
+  </TemplateRegistration>
+  <TemplateRegistration>
+    <FileName>createEvent_response_xmatters.xsl</FileName>
+    <InternalName>createEvent</InternalName>
+    <TemplateName>Create Event Response</TemplateName>
+    <TemplateType>InboundXSL</TemplateType>
+    <Description>This is the response xsl file for the createEvent method</Description>
+  </TemplateRegistration>
+  <TemplateRegistration>
+    <FileName>updateEvent_request_xmatters.xsl</FileName>
+    <InternalName>updateEvent</InternalName>
+    <TemplateName>Update Event Request</TemplateName>
+    <TemplateType>OutboundXSL</TemplateType>
+    <Description>This is the request xsl file for the updateEvent method</Description>
+  </TemplateRegistration>
+  <TemplateRegistration>
+    <FileName>updateEvent_response_xmatters.xsl</FileName>
+    <InternalName>updateEvent</InternalName>
+    <TemplateName>Update Event Response</TemplateName>
+    <TemplateType>InboundXSL</TemplateType>
+    <Description>This is the response xsl file for the updateEvent method</Description>
+  </TemplateRegistration>
+</ManagementConnector>
