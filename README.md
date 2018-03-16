@@ -16,7 +16,11 @@
 SiteScope uses templates when generating alert messages and reports. In most cases, you select the template you want to use in the Alert page when you create an alert. You can customize the existing templates or create your own by making a copy of an existing template. You customize the alert templates by adding or removing text, by adding property variables (as listed in the Properties Available in Alerts, Templates, and Events), or changing the order of text or property variables that are included in the template.
 
 # Installation
-## Step 1: Extract Schema Files
+
+## Oracle Enterprise Manager Cloud Control
+The following steps are to be performed in Oracle Cloud Control
+
+### Step 1: Extract Schema Files
 
 1. In the Cloud Control UI, open the Extensibility Development Kit (EDK) by navigating to Setup > Extensibility > Development Kit.
 
@@ -34,7 +38,7 @@ SiteScope uses templates when generating alert messages and reports. In most cas
 
 For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG416).
 
-## Step 2: Build the Event Connector
+### Step 2: Build the Event Connector
 
 1. Create the following template files:
    - createEvent_request_xMatters.xsl
@@ -49,7 +53,7 @@ For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E
 
    For more information, see [Defining the Connector Descriptor File](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG190).
 
-## Step 3: Deploy the Event Connector
+### Step 3: Deploy the Event Connector
 
 1. Compress the connector descriptor and template files from Step 2 into a .jar file named xmatters_connector.jar
 
@@ -75,9 +79,17 @@ For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E
 
 For more information, see [Packaging and Deploying the Event Connector](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG209).
 
+## xMatters
+The following steps are to be performed in xMatters
+
+### Communication Plan
+Import the communication plan [Cloud Control Communication Plan](cloud-control-plan.zip)
+
+### Integration Builder
+From within the Integration Builder review the
+
 # Testing
 For testing execute the action to occur.
-
 
 # Troubleshooting
 For testing execute the action to occur.
