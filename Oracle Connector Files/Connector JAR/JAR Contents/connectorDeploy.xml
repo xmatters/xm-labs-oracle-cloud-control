@@ -11,6 +11,16 @@
     <DefaultTargetName>xMatters</DefaultTargetName>
     <DefaultTargetDisplayName>xMatters</DefaultTargetDisplayName>
   </NewTargetType>
+  <!--<HTTPBasicAuthentication>
+      <Username required="true">
+        <VariableName>Username</VariableName>
+        <DisplayName>xMatters Web Service Username</DisplayName>
+      </Username>
+      <Password required="true">
+        <VariableName>Password</VariableName>
+        <DisplayName>xMatters Web Service Password</DisplayName>
+      </Password>
+    </HTTPBasicAuthentication>-->
   <Service>
     <Method>createEvent</Method>
     <WebServiceEndpoint>

@@ -13,12 +13,12 @@
 * [xm-sitescope-trigger.json](xm-sitescope-trigger.json) - This is the update set that will provide the customizations required.
 
 # How it works
-SiteScope uses templates when generating alert messages and reports. In most cases, you select the template you want to use in the Alert page when you create an alert. You can customize the existing templates or create your own by making a copy of an existing template. You customize the alert templates by adding or removing text, by adding property variables (as listed in the Properties Available in Alerts, Templates, and Events), or changing the order of text or property variables that are included in the template.
+Incident Rules are configured from within Oracle Cloud Control to execute upon certain criteria. With the xMatters connector configured, the Incident Rules can be configured to execute a web service call to xMatters to create an Event for the associated Incident in Oracle Cloud Control.
 
 # Installation
 
-## Oracle Enterprise Manager Cloud Control
-The following steps are to be performed in Oracle Cloud Control
+## Configuring the xMatters Connecter in Oracle Cloud Control
+The following steps detail the process to configure the xMatters connector in Oracle Cloud Control
 
 ### Step 1: Extract Schema Files
 
@@ -38,27 +38,15 @@ The following steps are to be performed in Oracle Cloud Control
 
 For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG416).
 
-### Step 2: Build the Event Connector
+### Step 2: Deploy the Event Connector
 
-1. Create the following template files:
-   - createEvent_request_xMatters.xsl
-   - createEvent_response_xMatters.xsl
-   - updateEvent_request_xMatters.xsl
-   - updateEvent_response_xMatters.xsl
+1. Prepare the manifest file: connector_manifest.xml
 
-   For more information, see [Developing Required Template Files](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG178).
 
-2. Create the connector descriptor file:
-   - connectorDeploy.xml
 
-   For more information, see [Defining the Connector Descriptor File](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG190).
 
-### Step 3: Deploy the Event Connector
 
-1. Compress the connector descriptor and template files from Step 2 into a .jar file named xmatters_connector.jar
-
-2. Prepare the manifest file: connector_manifest.xml
-
+### Step 3: Configure the Connector
 3. Configure the emedk tool by following the instructions from EDK in the Cloud Control UI (Setup > Extensibility > Development Kit)
    - note: the endpoints to be configured will be the URL's for the xMatters inbound integration from your xMatters application
    - ![Configure Name](media/configure_name.png?raw=true)
@@ -78,6 +66,43 @@ For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E
 
 
 For more information, see [Packaging and Deploying the Event Connector](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG209).
+ ---
+
+ 1. Create the following template files:
+    - createEvent_request_xMatters.xsl
+    - createEvent_response_xMatters.xsl
+    - updateEvent_request_xMatters.xsl
+    - updateEvent_response_xMatters.xsl
+
+    For more information, see [Developing Required Template Files](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG178).
+
+ 2. Create the connector descriptor file:
+    - connectorDeploy.xml
+
+    For more information, see [Defining the Connector Descriptor File](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG190).
+
+ ### Step 3: Deploy the Event Connector
+
+ 1. Compress the connector descriptor and template files from Step 2 into a .jar file named xmatters_connector.jar
+
+IF ANY CHANGES are needed see https://docs.oracle.com/javase/tutorial/deployment/jar/build.html regarding compressing the JAR file
+
+Compress:
+
+jar cf jar-file input-file(s)
+
+jar cf xmatters_connector.jar connectorDeploy.xml createEvent_request_xmatters.xsl createEvent_response_xmatters.xsl updateEvent_request_xmatters.xsl updateEvent_response_xMatters.xsl
+
+Extract:
+
+jar xf jar-file
+
+jar xf xmatters_connector.jar
+
+## Configuring the Incident Rules to execute the xMatters Connector web service
+
+
+
 
 ## xMatters
 The following steps are to be performed in xMatters
@@ -93,3 +118,5 @@ For testing execute the action to occur.
 
 # Troubleshooting
 For testing execute the action to occur.
+
+Information regarding the configuration of this integration can be found on Oracle's [site](https://docs.oracle.com/cd/E73210_01/EMCIG/toc.htm).
