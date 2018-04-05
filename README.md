@@ -24,15 +24,23 @@ The following steps detail the process to configure the xMatters connector in Or
 
 1. In the Cloud Control UI, open the Extensibility Development Kit (EDK) by navigating to Setup > Extensibility > Development Kit.
 
-  ![Open Development Kit](media/edk_open.png?raw=true)
+<kbd>
+  <img src="https://github.com/matthewhenry1/xm-labs-sitescope/blob/master/media/action_type.png">
+</kbd>
+
 
 2. Note the requirements listed to use the EDK.
 
-  ![EDK Requirements](media/edk_requirements.png?raw=true)
+<kbd>
+  <img src="https://github.com/matthewhenry1/xm-labs-sitescope/blob/master/media/edk_req.png">
+</kbd>
+
 
 3. Download the EDK to your server by following the steps listed under Deployment.
 
-  ![EDK Deployment](media/edk_deployment.png?raw=true)
+<kbd>
+  <img src="https://github.com/matthewhenry1/xm-labs-sitescope/blob/master/media/edk_deployment.png">
+</kbd>
 
 4. Extract the schema files located in the **emMrsXsds.jar** file in the **emSDK** directory using the **jar** command.
 
@@ -42,16 +50,6 @@ For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E
 
 1. Prepare the manifest file: connector_manifest.xml
 
-
-
-
-
-### Step 3: Configure the Connector
-3. Configure the emedk tool by following the instructions from EDK in the Cloud Control UI (Setup > Extensibility > Development Kit)
-   - note: the endpoints to be configured will be the URL's for the xMatters inbound integration from your xMatters application
-   - ![Configure Name](media/configure_name.png?raw=true)
-   - ![Configure Screen](media/configure_screen.png?raw=true)
-   - ![Configure Endpoints](media/configure_endpoints.png?raw=true)
 
 4. Prepare the self archive directory
    - command: `edkutil prepare_update -manifest /u01/connector/connector_manifest.xml -archivedir /u01/connector/archives -out  /u01/sar/xmatters_connector.zip`
@@ -65,6 +63,15 @@ For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E
    - command: `emcli apply_updates -id=<ID>`
 
 
+### Step 3: Configure the Connector
+3. Configure the emedk tool by following the instructions from EDK in the Cloud Control UI (Setup > Extensibility > Development Kit)
+   - note: the endpoints to be configured will be the URL's for the xMatters inbound integration from your xMatters application
+   - ![Configure Name](media/configure_name.png?raw=true)
+   - ![Configure Screen](media/configure_screen.png?raw=true)
+   - ![Configure Endpoints](media/configure_endpoints.png?raw=true)
+
+
+### If edits are required
 For more information, see [Packaging and Deploying the Event Connector](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG209).
  ---
 
@@ -102,7 +109,7 @@ jar xf xmatters_connector.jar
 ## Configuring the Incident Rules to execute the xMatters Connector web service
 
 
-
+??????
 
 ## xMatters
 The following steps are to be performed in xMatters
