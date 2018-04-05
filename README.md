@@ -4,12 +4,13 @@
   ![Oracle Cloud Control Overview](media/cc_overview.png?raw=true)
 
 # Prerequisites
-
 * Oracle Enterprise Manager Cloud Control
 * Understanding of XML, XSD, and XSLT
 * xMatters account
 
 # Files
+* [Cloud Control Communication Plan](Cloud Control Comunication.zip)
+* [xmatters_connector.jar](/Oracle Connector Files/Connector JAR/xmatters_connector.jar)
 * [Cloud Control Communication Plan](Cloud Control Comunication.zip)
 
 # How it works
