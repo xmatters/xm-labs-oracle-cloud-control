@@ -10,12 +10,46 @@
 * xMatters account
 
 # Files
-* [xm-sitescope-trigger.json](xm-sitescope-trigger.json) - This is the update set that will provide the customizations required.
+* [Cloud Control Communication Plan](Cloud Control Comunication.zip)
 
 # How it works
 Incident Rules are configured from within Oracle Cloud Control to execute upon certain criteria. With the xMatters connector configured, the Incident Rules can be configured to execute a web service call to xMatters to create an Event for the associated Incident in Oracle Cloud Control.
 
 # Installation
+## xMatters
+
+### Import the Communication Plan
+* Import the Cloud Control Communication Plan [Cloud Control Communication Plan](Cloud Control Comunication.zip)
+* Instructions to import a Communication Plan can be found here: [Import a Communication Plan](http://help.xmatters.com/OnDemand/xmodwelcome/communicationplanbuilder/exportcommplan.htm)
+
+### Import Communication Plan
+
+### Create a REST user account
+* **First Name:** Cloud Control
+* **Last Name:** Rest Web Service
+* **User ID:** cloudcontrol
+* **Roles:** REST Web Service User, Developer
+
+## Oracle Cloud Control
+
+### Assign permissions to the Communication Plan, Form, and Endpoint  
+1. **Communication Plan**
+    * From within the Developer tab, select the Edit drop-down menu for the Cloud Control communication plan
+    * From the Edit drop-down menu, select Access Permissions
+    * From within Access Permissions, add the xMatters REST User created
+
+2. **Form**
+    * From within the Developer tab, select the Edit drop-down menu for the Cloud Control communication plan
+    * From the Edit drop-down menu, select Forms
+    * From within Forms, select the Web Service drop-down menu for the Cloud Control form
+    * From within Web Service drop-down menu, select Sender Permissions
+    * From within Sender Permissions, add the xMatters REST User created
+
+3. **Endpoint**
+    * From within the Developer tab, select the Edit drop-down menu for the Cloud Control communication plan
+    * From the Edit drop-down menu, select Integration Builder
+    * From within the Integration Builder tab, select Edit Endpoints
+    * From within Edit Endpoints, add the xMatters REST User created
 
 ## Configuring the xMatters Connecter in Oracle Cloud Control
 The following steps detail the process to configure the xMatters connector in Oracle Cloud Control
@@ -100,7 +134,7 @@ Example output:
 
 Notice that the xMatters Connector is only downloaded
 
-`[oracle@b12cloudcp1 xMatterMgMtCollector]$ emcli list -resource=Updates -bind="et_name = 'core_connector'"`
+`emcli list -resource=Updates -bind="et_name = 'core_connector'"`
 
 ```
 Status      Category              Type                  Version               Vendor      Size (MB)   Id
@@ -201,12 +235,33 @@ Rows:22
 ```
 
 ### Step 3: Configure the Connector
-3. Configure the emedk tool by following the instructions from EDK in the Cloud Control UI (Setup > Extensibility > Development Kit)
-   - note: the endpoints to be configured will be the URL's for the xMatters inbound integration from your xMatters application
-   - ![Configure Name](media/configure_name.png?raw=true)
-   - ![Configure Screen](media/configure_screen.png?raw=true)
-   - ![Configure Endpoints](media/configure_endpoints.png?raw=true)
+1. Configure the connector by navigating to Setup > Extensibility > Management Connectors.
 
+<kbd>
+  <img src="https://github.com/matthewhenry1/xm-labs-oracle-cloud-control/blob/master/media/setup_development_kit.png" width="550" height="461">
+</kbd>
+
+2. Name the Connector
+
+![Configure Name](media/configure_name.png?raw=true)
+
+3. Select to Configure the newly craeted xMatters Connector
+![Configure Screen](media/configure_screen.png?raw=true)
+
+4. Configure the Web Service Endpoints
+![Configure Endpoints](media/configure_endpoints.png?raw=true)
+
+The integration is designed only as URL Authentication. See section below for Basic Authentication if this is desired to be changed.
+
+To populate the **createEvent** and **updateEvent** field, follow the next steps:
+1. Navigate to xMatters
+2. Login with as the newly created cloudcontrol Rest Web Service that was configured earlier. It is very imporant the user logins as the **cloudcontrol** user when using URL Authentication.
+3. Navigate to the Developer tab
+4. From within the Developer tab, select the Edit drop-down menu for the CloudControl communication plan
+5. From the Edit drop-down menu, select Integration Builder
+6. From within the Integration Builder tab, find the Inbound Integrations and select the **Primary Inbound Web Service**
+7. From within the Inbound Integrations page, ensure that URL Authentication is selected.
+8. Lastly copy the URL at the bottom of the page and paste it into the **createEvent** and **updateEvent** fields.
 
 ### If edits are required
 
