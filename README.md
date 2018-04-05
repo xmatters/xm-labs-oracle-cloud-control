@@ -33,19 +33,19 @@ The following steps detail the process to configure the xMatters to integrate wi
 * **Roles:** REST Web Service User, Developer
 
 ### Assign permissions to the Communication Plan, Form, and Endpoint  
-1. **Communication Plan**
+1. **Communication Plan**  
     * From within the Developer tab, select the Edit drop-down menu for the Cloud Control communication plan
     * From the Edit drop-down menu, select Access Permissions
     * From within Access Permissions, add the xMatters REST User created
 
-2. **Form**
+2. **Form**  
     * From within the Developer tab, select the Edit drop-down menu for the Cloud Control communication plan
     * From the Edit drop-down menu, select Forms
     * From within Forms, select the Web Service drop-down menu for the Cloud Control form
     * From within Web Service drop-down menu, select Sender Permissions
     * From within Sender Permissions, add the xMatters REST User created
 
-3. **Endpoint**
+3. **Endpoint**  
     * From within the Developer tab, select the Edit drop-down menu for the Cloud Control communication plan
     * From the Edit drop-down menu, select Integration Builder
     * From within the Integration Builder tab, select Edit Endpoints
@@ -72,12 +72,12 @@ Throughout the remainder of the installation article, there are reference to **O
 
 4. Extract the schema files
 
-The schema files are located in the **emMrsXsds.jar** file in the **emSDK** directory. To access the files, you will need to extract them using the **jar** command or any other utility that understands the jar file format. Use the following command to extract the files using the **jar** command from the EDK installation directory:
+The schema files are located in the **emMrsXsds.jar** file in the **emSDK** directory. To access the files, you will need to extract them using the **jar** command or any other utility that understands the jar file format. Use the following command to extract the files using the **jar** command from the EDK installation directory:  
 
-**Oracle Provided Example:**
+**Oracle Provided Example:**  
 `$JAVA_HOME/bin/jar xvf emSDK/emMrsXsds.jar`
 
-**Working Example:**
+**Working Example:**  
 
 ```
 cd /u02/gc_inst/em/EMGC_OMS1/sysman
@@ -90,16 +90,16 @@ For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E
 
 ### Step 2: Deploy the Event Connector
 
-1. On the Oracle Cloud Control server it is recommended to make a working directory or as Oracle calls it an "Archive" directory to contain the xMatters Connector Files. Below is an example of an Archive Directory named **xMattersMgMtCollector**.
+1. On the Oracle Cloud Control server it is recommended to make a working directory or as Oracle calls it an "Archive" directory to contain the xMatters Connector Files. Below is an example of an Archive Directory named **xMattersMgMtCollector**.  
 
-**Working Example:**
-`mkdir  /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector`
+**Working Example:**  
+`mkdir  /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector`  
 
 2. Once the **xMattersMgMtCollector** directory has been created, download the  [xmatters_connector.jar](Connector_Files/Connector_JAR/xmatters_connector.jar) and [connector_manifest.xml](Connector_Files/Connector_Manifest/connector_manifest.xml) to the **xMattersMgMtCollector** directory.
 
 2. Prepare the self archive directory
 
-This requires the connector jar file and the manifest file for the connector. To prepare self-update, call the following utility to create a self update archive file:
+This requires the connector jar file and the manifest file for the connector. To prepare self-update, call the following utility to create a self update archive file:  
 
 ```
 edkutil prepare_update
@@ -117,9 +117,9 @@ edkutil prepare_update
 
 * **-typexml** Optional path to the update type xml
 
-The following example creates a self update archive in the `/u01/sar` directory based on the manifest file `/u01/connector/connector_manifest.xml`. The archives referred to in `connector_manifest.xml` are picked from the directory `/u01/connector/archives`.
+The following example creates a self update archive in the `/u01/sar` directory based on the manifest file `/u01/connector/connector_manifest.xml`. The archives referred to in `connector_manifest.xml` are picked from the directory `/u01/connector/archives`.  
 
-**Oracle Provided Example:**
+**Oracle Provided Example:**    
 Note that the `-out` can be either a directory or file.
 ```
 edkutil prepare_update
@@ -128,32 +128,33 @@ edkutil prepare_update
          -out  /u01/sar/sample_connector.zip
 ```
 
-**Working Example:**
-Note that the `-out` can be either a directory or file.
+**Working Example:**  
+Note that the `-out` can be either a directory or file.  
 ```
 /u02/gc_inst/em/EMGC_OMS1/sysman/oracle_edk/bin/edkutil prepare_update -manifest "connector_manifest.xml" \
 -archivedir "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector" \
 -out "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector"
 ```
 
-**Working Example Result:**
+**Working Example Result:**  
 ```
 Archive created successfully: /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip
 ```
 
-3. Import the connector to Cloud Control
-   - command: `emcli import_update -file=\/u01/common/update1.zip\ -omslocal`
+3. Import the connector to Cloud Control  
+**Oracle Provided Example:**    
+ `emcli import_update -file=\/u01/common/update1.zip\ -omslocal`
 
-**Working Example:**
+**Working Example:**  
 `emcli import_update -file=\/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip -omslocal`
 
-**Working Example Result:**
+**Working Example Result:**  
 ```
 Processing update: Management Connector -  xMatters Connector 12.1.0.1.0
 Successfully uploaded the update to Enterprise Manager. Use the Self Update Console to manage this update.
 ```
 
-4. Query the connector  
+4. Query the connector   
 
 **Working Example:**  
 
@@ -161,7 +162,7 @@ Successfully uploaded the update to Enterprise Manager. Use the Self Update Cons
 
 **Working Example Result:**  
 
-Notice that the xMatters Connector is only downloaded
+Notice that the xMatters Connector is only downloaded  
 
 `emcli list -resource=Updates -bind="et_name = 'core_connector'"`
 
@@ -201,17 +202,17 @@ Downloaded  Event Connector       xMatters Connector    12.1.0.1.0            Or
 Rows:22
 ```
 
-5. Apply the connector
+5. Apply the connector  
 Use the connector ID for the imported connector to run the following command
 
-**Oracle Provided Example:**
+**Oracle Provided Example:**  
 
-`emcli apply_updates -id=<ID>`
+`emcli apply_updates -id=<ID>`  
 
-**Working Example Result:**
-`emcli apply_update -id=FCD7F48FED8DBA5CF7E0FA63D3601B91`
+**Working Example Result:**  
+`emcli apply_update -id=FCD7F48FED8DBA5CF7E0FA63D3601B91`  
 
-**Working Example Result:**
+**Working Example Result:**  
 
 ```
 A job has been submitted to Apply the update.
@@ -219,19 +220,19 @@ The job execution id is 665E3513EA83C730E05351E670A52C7C.
 For latest update status, you can execute emcli get_update_status -id="FCD7F48FED8DBA5CF7E0FA63D3601B91"
 ```
 
-**To check the status:**
+**To check the status:**  
 ```
 emcli get_update_status -id="FCD7F48FED8DBA5CF7E0FA63D3601B91"
 Update status is Applied.
 ```
 
-6. Rerun query to confirm status:
+6. Rerun query to confirm status:  
 
-`emcli list -resource=Updates -bind="et_name = 'core_connector'"`
+`emcli list -resource=Updates -bind="et_name = 'core_connector'"`  
 
-**Working Example Result:**
+**Working Example Result:**  
 
-Notice you will find that the xMatters Connector is now applied
+Notice you will find that the xMatters Connector is now applied  
 ```
 Status      Category              Type                  Version               Vendor      Size (MB)   Id
 Downloaded  Ticketing Connector   CASD No Publish Conn  12.1.0.2.0            Oracle      27.892      F8EF550F79F0CD897A3389A3F70DBBDD
