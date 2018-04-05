@@ -17,6 +17,7 @@ Incident Rules are configured from within Oracle Cloud Control to execute upon c
 
 # Installation
 ## xMatters
+The following steps detail the process to configure the xMatters to integrate with Oracle Cloud Control.
 
 ### Import the Communication Plan
 * Import the Cloud Control Communication Plan [Cloud Control Communication Plan](Cloud Control Comunication.zip)
@@ -29,8 +30,6 @@ Incident Rules are configured from within Oracle Cloud Control to execute upon c
 * **Last Name:** Rest Web Service
 * **User ID:** cloudcontrol
 * **Roles:** REST Web Service User, Developer
-
-## Oracle Cloud Control
 
 ### Assign permissions to the Communication Plan, Form, and Endpoint  
 1. **Communication Plan**
@@ -51,8 +50,8 @@ Incident Rules are configured from within Oracle Cloud Control to execute upon c
     * From within the Integration Builder tab, select Edit Endpoints
     * From within Edit Endpoints, add the xMatters REST User created
 
-## Configuring the xMatters Connecter in Oracle Cloud Control
-The following steps detail the process to configure the xMatters connector in Oracle Cloud Control
+## Oracle Cloud Control
+The following steps detail the process to configure the xMatters connector in Oracle Cloud Control.
 
 ### Step 1: Extract Schema Files
 
