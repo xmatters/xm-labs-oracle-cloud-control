@@ -12,7 +12,7 @@
 * [Cloud_Control_Communication_Plan.zip](Cloud_Control_Communication_Plan.zip)
 * [xmatters_connector.jar](Connector_Files/Connector_JAR/xmatters_connector.jar)
 * [connector_manifest.xml](Connector_Files/Connector_Manifest/connector_manifest.xml)
-* [xmatters_connector.jar](xmatters_connector.jar)
+
 # How it works
 Incident Rules are configured from within Oracle Cloud Control to execute upon certain criteria. With the xMatters connector configured, the Incident Rules can be configured to execute a web service call to xMatters to create an Event for the associated Incident in Oracle Cloud Control.
 
@@ -21,7 +21,7 @@ Incident Rules are configured from within Oracle Cloud Control to execute upon c
 The following steps detail the process to configure the xMatters to integrate with Oracle Cloud Control.
 
 ### Import the Communication Plan
-* Import the Cloud Control Communication Plan [Cloud Control Communication Plan](Cloud Control Comunication.zip)
+* Import the Cloud Control Communication Plan [Cloud_Control_Communication_Plan.zip](Cloud_Control_Communication_Plan.zip)
 * Instructions to import a Communication Plan can be found here: [Import a Communication Plan](http://help.xmatters.com/OnDemand/xmodwelcome/communicationplanbuilder/exportcommplan.htm)
 
 ### Import Communication Plan
@@ -72,13 +72,28 @@ The following steps detail the process to configure the xMatters connector in Or
 
 The schema files are located in the **emMrsXsds.jar** file in the **emSDK** directory. To access the files, you will need to extract them using the **jar** command or any other utility that understands the jar file format. Use the following command to extract the files using the **jar** command from the EDK installation directory:
 
+Oracle Provided Example:
 `$JAVA_HOME/bin/jar xvf emSDK/emMrsXsds.jar`
+
+Working Example:
+
+```
+cd /u02/gc_inst/em/EMGC_OMS1/sysman
+export JAVA_HOME=/u03/software/jdk1.7.0_171
+export PATH=$PATH:$JAVA_HOME/bin
+unzip -d /u02/gc_inst/em/EMGC_OMS1/sysman/oracle_edk/ /tmp/13.2.0.0.0_edk_partner.zip
+```
 
 For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG416).
 
 ### Step 2: Deploy the Event Connector
 
-1. Download the
+1. On the Oracle Cloud Control server it is recommended to make a working directory or as Oracle calls it an "Archive" directory to contain the xMatters Connector Files. Below is an example of an Archive Directory named **xMattersMgMtCollector**.
+
+Example Command:
+`mkdir  /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector`
+
+2. Once the **xMattersMgMtCollector** directory has been created, download the  [xmatters_connector.jar](Connector_Files/Connector_JAR/xmatters_connector.jar) and [connector_manifest.xml](Connector_Files/Connector_Manifest/connector_manifest.xml) to the **xMattersMgMtCollector** directory.
 
 2. Prepare the self archive directory
 
@@ -103,7 +118,7 @@ edkutil prepare_update
 The following example creates a self update archive in the `/u01/sar` directory based on the manifest file `/u01/connector/connector_manifest.xml`. The archives referred to in `connector_manifest.xml` are picked from the directory `/u01/connector/archives`.
 
 Sample command provided from Oracle:
-`edkutil prepare_update -manifest /u01/connector/connector_manifest.xml -archivedir /u01/connector/archives -out  /u01/sar/xmatters_connector.zip`
+`edkutil prepare_update -manifest /u01/connector/connector_manifest.xml -archivedir /u01/connector/archives -out   /u01/connector/archives`
 
 Another Example:
 ```
@@ -112,20 +127,18 @@ Another Example:
 -out "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector"
 ```
 
-Example output:
+Example Result:
 ```
-/u02/gc_inst/em/EMGC_OMS1/sysman/oracle_edk/bin/edkutil prepare_update -manifest "connector_manifest.xml" \
-> -archivedir "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector" \
-> -out "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector"
 Archive created successfully: /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip
 ```
 
 3. Import the connector to Cloud Control
    - command: `emcli import_update -file=\/u01/common/update1.zip\ -omslocal`
-Example:
+
+Working Example:
 `emcli import_update -file=\/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip -omslocal`
 
-Example Output:
+Working Example Output:
 ```
 Processing update: Management Connector -  xMatters Connector 12.1.0.1.0
 Successfully uploaded the update to Enterprise Manager. Use the Self Update Console to manage this update.
@@ -186,6 +199,7 @@ Example:
 `emcli apply_update -id=FCD7F48FED8DBA5CF7E0FA63D3601B91`
 
 Output example:
+
 ```
 emcli apply_update -id=FCD7F48FED8DBA5CF7E0FA63D3601B91
 A job has been submitted to Apply the update.
@@ -267,68 +281,56 @@ To populate the **createEvent** and **updateEvent** field, follow the next steps
 7. From within the Inbound Integrations page, ensure that URL Authentication is selected.
 8. Lastly copy the URL at the bottom of the page and paste it into the **createEvent** and **updateEvent** fields.
 
-### If edits are required
-
-
-1. Prepare the manifest file: connector_manifest.xml
-
-
-For more information, see [Packaging and Deploying the Event Connector](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG209).
- ---
-
- 1. Create the following template files:
-    - createEvent_request_xMatters.xsl
-    - createEvent_response_xMatters.xsl
-    - updateEvent_request_xMatters.xsl
-    - updateEvent_response_xMatters.xsl
-
-    For more information, see [Developing Required Template Files](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG178).
-
- 2. Create the connector descriptor file:
-    - connectorDeploy.xml
-
-    For more information, see [Defining the Connector Descriptor File](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG190).
-
- ### Step 3: Deploy the Event Connector
-
- 1. Compress the connector descriptor and template files from Step 2 into a .jar file named xmatters_connector.jar
-
-IF ANY CHANGES are needed see https://docs.oracle.com/javase/tutorial/deployment/jar/build.html regarding compressing the JAR file
-
-Compress:
-
-jar cf jar-file input-file(s)
-
-jar cf xmatters_connector.jar connectorDeploy.xml createEvent_request_xmatters.xsl createEvent_response_xmatters.xsl updateEvent_request_xmatters.xsl updateEvent_response_xMatters.xsl
-
-Extract:
-
-jar xf jar-file
-
-jar xf xmatters_connector.jar
-
-## Configuring the Incident Rules to execute the xMatters Connector web service
-
-
-??????
-
-## xMatters
-The following steps are to be performed in xMatters
-
-### Communication Plan
-Import the communication plan [Cloud Control Communication Plan](cloud-control-plan.zip)
-
-### Integration Builder
-From within the Integration Builder review the
+## Incident Rules
+Once the connector has been successfully deployed as documented above, it is necessary to associate the new xMatters connector to an Incident rule to test the integration.
 
 # Testing
-For testing execute the action to occur.
+Execute a trigger condition of an Incident rule to initiate the xMatters integration
 
 # Troubleshooting
-For testing execute the action to occur.
+
+## Oracle Documentation
 
 Information regarding the configuration of this integration can be found on Oracle's [site](https://docs.oracle.com/cd/E73210_01/EMCIG/toc.htm).
 
-1. Add xMatters root certificate to Cloud Control
+## Add xMatters root certificate to Cloud Control
+If there appears to be any SSL Handshake error from within the Oracle Cloud Control logging, it may be required to add the xMatters root certificate to Cloud Control. Below is an example of adding the base64 encoded cert to Cloud Control
 
+```
 cp /u02/gc_inst/em/EMGC_OMS1/sysman/config/b64LocalCertificate.txt /u02/gc_inst/em/EMGC_OMS1/sysman/config/b64LocalCertificate.txt.03012018
+```
+
+# Editing the Connector files
+If it is required to edit the Connector Files for any reason see below.
+
+## Converting integration to Basic Authentication
+If necessary to convert the integration to a Basic Authentication complete the following steps:
+
+1. Download the entire contents of the [JAR_Contents](Connector_JAR/JAR_Contents) folder.
+
+2. Open the `connectorDeploy.xml` and uncomment the lines for the authentication.
+
+3. Once uncommented compress all contents to a JAR file. Compressing to Jar file [reference]  (https://docs.oracle.com/javase/tutorial/deployment/jar/build.html).
+
+jar cf xmatters_connector.jar connectorDeploy.xml createEvent_request_xmatters.xsl createEvent_response_xmatters.xsl updateEvent_request_xmatters.xsl updateEvent_response_xMatters.xsl
+
+
+## General Knowledge on Package Development
+
+1. Prepare the manifest file: connector_manifest.xml
+
+  For more information, see [Packaging and Deploying the Event Connector](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG209).
+ ---
+
+2. Create the following template files:
+  - createEvent_request_xMatters.xsl
+  - createEvent_response_xMatters.xsl
+  - updateEvent_request_xMatters.xsl
+  - updateEvent_response_xMatters.xsl
+
+  For more information, see [Developing Required Template Files](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG178).
+
+3. Create the connector descriptor file:
+  - connectorDeploy.xml
+
+  For more information, see [Defining the Connector Descriptor File](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG190).
