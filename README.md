@@ -9,7 +9,7 @@
 * xMatters account
 
 # Files
-* [Cloud Control Communication Plan]("Cloud Control Communication Plan.zip")
+* [Cloud Control Communication Plan](Cloud_Control_Communication_Plan.zip)
 * [xmatters_connector.jar](Oracle Connector Files/Connector JAR/xmatters_connector.jar)
 * [Cloud Control Communication Plan](Cloud Control Comunication.zip)
 
