@@ -57,9 +57,7 @@ The following steps detail the process to configure the xMatters connector in Or
 
 1. In the Cloud Control UI, open the Extensibility Development Kit (EDK) by navigating to Setup > Extensibility > Development Kit.
 
-    <kbd>
-      <img src="https://github.com/matthewhenry1/xm-labs-oracle-cloud-control/blob/master/media/setup_development_kit.png">
-    </kbd>
+  ![Configure Connector](media/setup_development_kit.png?raw=true)
 
 2. Note the requirements listed to use the EDK.
 
@@ -242,17 +240,19 @@ Rows:22
 ### Step 3: Configure the Connector
 1. Configure the connector by navigating to Setup > Extensibility > Management Connectors.
 
-![Configure Connector](media/setup_development_kit.png?raw=true)
+  ![Configure Connector](media/setup_development_kit.png?raw=true)
 
 2. Name the Connector
 
-![Configure Name](media/configure_name.png?raw=true)
+  ![Configure Name](media/configure_name.png?raw=true)
 
 3. Select to Configure the newly craeted xMatters Connector
-![Configure Screen](media/configure_screen.png?raw=true)
+
+  ![Configure Screen](media/configure_screen.png?raw=true)
 
 4. Configure the Web Service Endpoints
-![Configure Endpoints](media/configure_endpoints.png?raw=true)
+
+  ![Configure Endpoints](media/configure_endpoints.png?raw=true)
 
 The integration is designed only as URL Authentication. See section below for Basic Authentication if this is desired to be changed.
 
