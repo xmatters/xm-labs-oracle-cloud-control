@@ -153,12 +153,13 @@ Processing update: Management Connector -  xMatters Connector 12.1.0.1.0
 Successfully uploaded the update to Enterprise Manager. Use the Self Update Console to manage this update.
 ```
 
-4. Query the connector
-**Working Example:**
+4. Query the connector  
+
+**Working Example:**  
 
 `emcli list -resource=Updates -bind="et_name = 'core_connector'"`
 
-**Working Example Result:**
+**Working Example Result:**  
 
 Notice that the xMatters Connector is only downloaded
 
