@@ -58,26 +58,28 @@ The following steps detail the process to configure the xMatters connector in Or
 1. In the Cloud Control UI, open the Extensibility Development Kit (EDK) by navigating to Setup > Extensibility > Development Kit.
 
     <kbd>
-      <img src="https://github.com/matthewhenry1/xm-labs-oracle-cloud-control/blob/master/media/setup_development_kit.png?raw=true">
+      <img src="https://github.com/matthewhenry1/xm-labs-oracle-cloud-control/blob/master/media/setup_development_kit.png">
     </kbd>
 
 2. Note the requirements listed to use the EDK.
 
   ![EDK Requirements](media/edk_req.png?raw=true)
-  <kbd>
-    <img src="https://github.com/matthewhenry1/xm-labs-oracle-cloud-control/blob/master/media/edk_req.png">
-  </kbd>
+
 3. Download the EDK to your server by following the steps listed under Deployment.
 
   ![EDK Deployment](media/edk_deployment.png?raw=true)
-  <kbd>
-    <img src="https://github.com/matthewhenry1/xm-labs-oracle-cloud-control/blob/master/media/edk_deployment.png">
-  </kbd>
-4. Extract the schema files located in the **emMrsXsds.jar** file in the **emSDK** directory using the **jar** command.
+
+4. Extract the schema files
+
+The schema files are located in the **emMrsXsds.jar** file in the **emSDK** directory. To access the files, you will need to extract them using the **jar** command or any other utility that understands the jar file format. Use the following command to extract the files using the **jar** command from the EDK installation directory:
+
+`$JAVA_HOME/bin/jar xvf emSDK/emMrsXsds.jar`
 
 For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG416).
 
 ### Step 2: Deploy the Event Connector
+
+1. Download the
 
 1. Prepare the self archive directory
 
@@ -101,10 +103,10 @@ edkutil prepare_update
 
 The following example creates a self update archive in the `/u01/sar` directory based on the manifest file `/u01/connector/connector_manifest.xml`. The archives referred to in `connector_manifest.xml` are picked from the directory `/u01/connector/archives`.
 
-Command:
+Sample command provided from Oracle:
 `edkutil prepare_update -manifest /u01/connector/connector_manifest.xml -archivedir /u01/connector/archives -out  /u01/sar/xmatters_connector.zip`
 
-Another example:
+Another Example:
 ```
 /u02/gc_inst/em/EMGC_OMS1/sysman/oracle_edk/bin/edkutil prepare_update -manifest "connector_manifest.xml" \
 -archivedir "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector" \
@@ -113,7 +115,7 @@ Another example:
 
 Example output:
 ```
-[oracle@b12cloudcp1 xMatterMgMtCollector]$ /u02/gc_inst/em/EMGC_OMS1/sysman/oracle_edk/bin/edkutil prepare_update -manifest "connector_manifest.xml" \
+/u02/gc_inst/em/EMGC_OMS1/sysman/oracle_edk/bin/edkutil prepare_update -manifest "connector_manifest.xml" \
 > -archivedir "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector" \
 > -out "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector"
 Archive created successfully: /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip
