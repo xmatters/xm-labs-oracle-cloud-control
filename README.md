@@ -24,7 +24,7 @@ The following steps detail the process to configure the xMatters connector in Or
 
 1. In the Cloud Control UI, open the Extensibility Development Kit (EDK) by navigating to Setup > Extensibility > Development Kit.
 
-  ![Open Development Kit](media/setup_development_kit.png?raw=true)
+  ![Open Development Kit](media/setup_development_kit.png?raw=true=550x442)
 
 2. Note the requirements listed to use the EDK.
 
