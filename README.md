@@ -213,11 +213,14 @@ Use the connector ID for the imported connector to run the following command
 **Working Example Result:**
 
 ```
-emcli apply_update -id=FCD7F48FED8DBA5CF7E0FA63D3601B91
 A job has been submitted to Apply the update.
 The job execution id is 665E3513EA83C730E05351E670A52C7C.
 For latest update status, you can execute emcli get_update_status -id="FCD7F48FED8DBA5CF7E0FA63D3601B91"
-[oracle@b12cloudcp1 xMatterMgMtCollector]$ emcli get_update_status -id="FCD7F48FED8DBA5CF7E0FA63D3601B91"
+```
+
+**To check the status:**
+```
+emcli get_update_status -id="FCD7F48FED8DBA5CF7E0FA63D3601B91"
 Update status is Applied.
 ```
 
