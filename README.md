@@ -81,7 +81,7 @@ For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E
 
 1. Download the
 
-1. Prepare the self archive directory
+2. Prepare the self archive directory
 
 This requires the connector jar file and the manifest file for the connector. To prepare self-update, call the following utility to create a self update archive file:
 
@@ -121,7 +121,7 @@ Example output:
 Archive created successfully: /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip
 ```
 
-2. Import the connector to Cloud Control
+3. Import the connector to Cloud Control
    - command: `emcli import_update -file=\/u01/common/update1.zip\ -omslocal`
 Example:
 `emcli import_update -file=\/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip -omslocal`
@@ -132,7 +132,7 @@ Processing update: Management Connector -  xMatters Connector 12.1.0.1.0
 Successfully uploaded the update to Enterprise Manager. Use the Self Update Console to manage this update.
 ```
 
-3. Query the connector
+4. Query the connector
    - command: `emcli list -resource=Updates -bind="et_name = 'core_connector'"`
 
 Example output:
@@ -177,7 +177,7 @@ Downloaded  Event Connector       xMatters Connector    12.1.0.1.0            Or
 Rows:22
 ```
 
-4. Apply the connector
+5. Apply the connector
 
 - use the connector ID for the imported connector to run the following command
 - command: `emcli apply_updates -id=<ID>`
@@ -196,7 +196,7 @@ For latest update status, you can execute emcli get_update_status -id="FCD7F48FE
 Update status is Applied.
 ```
 
-5. Rerun query to confirm status:
+6. Rerun query to confirm status:
 
 `emcli list -resource=Updates -bind="et_name = 'core_connector'"`
 
@@ -242,9 +242,7 @@ Rows:22
 ### Step 3: Configure the Connector
 1. Configure the connector by navigating to Setup > Extensibility > Management Connectors.
 
-<kbd>
-  <img src="https://github.com/matthewhenry1/xm-labs-oracle-cloud-control/blob/master/media/setup_development_kit.png" width="550" height="461">
-</kbd>
+![Configure Connector](media/setup_development_kit.png?raw=true)
 
 2. Name the Connector
 
