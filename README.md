@@ -54,6 +54,8 @@ The following steps detail the process to configure the xMatters to integrate wi
 ## Oracle Cloud Control
 The following steps detail the process to configure the xMatters connector in Oracle Cloud Control.
 
+Throughout the remainder of the installation article, there are reference to **Oracle Provided Example** and **Working Example** commands. The **Oracle Provided Example** command is what Oracle lists on their installation site [here](https://docs.oracle.com/cd/E73210_01/EMCIG/toc.htm). Whereas the **Working Example** command is what was used to build this article.
+
 ### Step 1: Extract Schema Files
 
 1. In the Cloud Control UI, open the Extensibility Development Kit (EDK) by navigating to Setup > Extensibility > Development Kit.
@@ -72,10 +74,10 @@ The following steps detail the process to configure the xMatters connector in Or
 
 The schema files are located in the **emMrsXsds.jar** file in the **emSDK** directory. To access the files, you will need to extract them using the **jar** command or any other utility that understands the jar file format. Use the following command to extract the files using the **jar** command from the EDK installation directory:
 
-Oracle Provided Example:
+**Oracle Provided Example:**
 `$JAVA_HOME/bin/jar xvf emSDK/emMrsXsds.jar`
 
-Working Example:
+**Working Example:**
 
 ```
 cd /u02/gc_inst/em/EMGC_OMS1/sysman
@@ -90,7 +92,7 @@ For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E
 
 1. On the Oracle Cloud Control server it is recommended to make a working directory or as Oracle calls it an "Archive" directory to contain the xMatters Connector Files. Below is an example of an Archive Directory named **xMattersMgMtCollector**.
 
-Example Command:
+**Working Example:**
 `mkdir  /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector`
 
 2. Once the **xMattersMgMtCollector** directory has been created, download the  [xmatters_connector.jar](Connector_Files/Connector_JAR/xmatters_connector.jar) and [connector_manifest.xml](Connector_Files/Connector_Manifest/connector_manifest.xml) to the **xMattersMgMtCollector** directory.
@@ -117,17 +119,24 @@ edkutil prepare_update
 
 The following example creates a self update archive in the `/u01/sar` directory based on the manifest file `/u01/connector/connector_manifest.xml`. The archives referred to in `connector_manifest.xml` are picked from the directory `/u01/connector/archives`.
 
-Sample command provided from Oracle:
-`edkutil prepare_update -manifest /u01/connector/connector_manifest.xml -archivedir /u01/connector/archives -out   /u01/connector/archives`
+**Oracle Provided Example:**
+Note that the `-out` can be either a directory or file.
+```
+edkutil prepare_update
+         -manifest /u01/connector/connector_manifest.xml
+         -archivedir /u01/connector/archives
+         -out  /u01/sar/sample_connector.zip
+```
 
-Another Example:
+**Working Example:**
+Note that the `-out` can be either a directory or file.
 ```
 /u02/gc_inst/em/EMGC_OMS1/sysman/oracle_edk/bin/edkutil prepare_update -manifest "connector_manifest.xml" \
 -archivedir "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector" \
 -out "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector"
 ```
 
-Example Result:
+**Working Example Result:**
 ```
 Archive created successfully: /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip
 ```
@@ -135,19 +144,21 @@ Archive created successfully: /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollec
 3. Import the connector to Cloud Control
    - command: `emcli import_update -file=\/u01/common/update1.zip\ -omslocal`
 
-Working Example:
+**Working Example:**
 `emcli import_update -file=\/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip -omslocal`
 
-Working Example Output:
+**Working Example Result:**
 ```
 Processing update: Management Connector -  xMatters Connector 12.1.0.1.0
 Successfully uploaded the update to Enterprise Manager. Use the Self Update Console to manage this update.
 ```
 
 4. Query the connector
-   - command: `emcli list -resource=Updates -bind="et_name = 'core_connector'"`
+**Working Example:**
 
-Example output:
+`emcli list -resource=Updates -bind="et_name = 'core_connector'"`
+
+**Working Example Result:**
 
 Notice that the xMatters Connector is only downloaded
 
@@ -190,15 +201,16 @@ Rows:22
 ```
 
 5. Apply the connector
+Use the connector ID for the imported connector to run the following command
 
-- use the connector ID for the imported connector to run the following command
-- command: `emcli apply_updates -id=<ID>`
+**Oracle Provided Example:**
 
-Example:
+`emcli apply_updates -id=<ID>`
 
+**Working Example Result:**
 `emcli apply_update -id=FCD7F48FED8DBA5CF7E0FA63D3601B91`
 
-Output example:
+**Working Example Result:**
 
 ```
 emcli apply_update -id=FCD7F48FED8DBA5CF7E0FA63D3601B91
@@ -213,7 +225,7 @@ Update status is Applied.
 
 `emcli list -resource=Updates -bind="et_name = 'core_connector'"`
 
-Example Output:
+**Working Example Result:**
 
 Notice you will find that the xMatters Connector is now applied
 ```
@@ -320,7 +332,6 @@ jar cf xmatters_connector.jar connectorDeploy.xml createEvent_request_xmatters.x
 1. Prepare the manifest file: connector_manifest.xml
 
   For more information, see [Packaging and Deploying the Event Connector](https://docs.oracle.com/cd/E73210_01/EMCIG/GUID-FBA700A1-B2F0-4A7B-980C-E4816A21FAD4.htm#EMCIG209).
- ---
 
 2. Create the following template files:
   - createEvent_request_xMatters.xsl
