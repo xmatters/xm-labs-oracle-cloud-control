@@ -46,11 +46,13 @@ For more information, see [Extracting Schema Files](https://docs.oracle.com/cd/E
 
 This requires the connector jar file and the manifest file for the connector. To prepare self-update, call the following utility to create a self update archive file:
 
-`edkutil prepare_update
+```
+edkutil prepare_update
         -manifest "manifest xml"
         -archivedir "archives directory"
         -out "output file or directory"
-        [-typexml "update type xml"]`
+        [-typexml "update type xml"]
+```
 
 * **-manifest** Self update manifest file that describes the update.
 
@@ -66,15 +68,19 @@ Command:
 `edkutil prepare_update -manifest /u01/connector/connector_manifest.xml -archivedir /u01/connector/archives -out  /u01/sar/xmatters_connector.zip`
 
 Another example:
-`/u02/gc_inst/em/EMGC_OMS1/sysman/oracle_edk/bin/edkutil prepare_update -manifest "connector_manifest.xml" \
+```
+/u02/gc_inst/em/EMGC_OMS1/sysman/oracle_edk/bin/edkutil prepare_update -manifest "connector_manifest.xml" \
 -archivedir "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector" \
--out "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector"`
+-out "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector"
+```
 
 Example output:
-`[oracle@b12cloudcp1 xMatterMgMtCollector]$ /u02/gc_inst/em/EMGC_OMS1/sysman/oracle_edk/bin/edkutil prepare_update -manifest "connector_manifest.xml" \
+```
+[oracle@b12cloudcp1 xMatterMgMtCollector]$ /u02/gc_inst/em/EMGC_OMS1/sysman/oracle_edk/bin/edkutil prepare_update -manifest "connector_manifest.xml" \
 > -archivedir "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector" \
 > -out "/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector"
-Archive created successfully: /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip`
+Archive created successfully: /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip
+```
 
 2. Import the connector to Cloud Control
    - command: `emcli import_update -file=\/u01/common/update1.zip\ -omslocal`
@@ -82,8 +88,10 @@ Example:
 `emcli import_update -file=\/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip -omslocal`
 
 Example Output:
-`Processing update: Management Connector -  xMatters Connector 12.1.0.1.0
-Successfully uploaded the update to Enterprise Manager. Use the Self Update Console to manage this update.`
+```
+Processing update: Management Connector -  xMatters Connector 12.1.0.1.0
+Successfully uploaded the update to Enterprise Manager. Use the Self Update Console to manage this update.
+```
 
 3. Query the connector
    - command: `emcli list -resource=Updates -bind="et_name = 'core_connector'"`
@@ -92,7 +100,9 @@ Example output:
 
 Notice that the xMatters Connector is only downloaded
 
-`[oracle@b12cloudcp1 xMatterMgMtCollector]$ emcli list -resource=Updates -bind="et_name = 'core_connector'"
+`[oracle@b12cloudcp1 xMatterMgMtCollector]$ emcli list -resource=Updates -bind="et_name = 'core_connector'"`
+
+```
 Status      Category              Type                  Version               Vendor      Size (MB)   Id
 Downloaded  Ticketing Connector   CASD No Publish Conn  12.1.0.2.0            Oracle      27.892      F8EF550F79F0CD897A3389A3F70DBBDD
                                   ector
@@ -125,7 +135,8 @@ Available   Ticketing Connector   HP Service Manager 7  12.1.0.2.0            Or
 Available   Event Connector       HP OMU Connector      12.1.0.2.0            Oracle      31.832      79D743673CA20D65720EFFBB9BE91A9C
 Available   Ticketing Connector   CASD Connector        12.1.0.2.0            Oracle      27.895      04C466202A167B6DC254D203BAC1ED2E
 Downloaded  Event Connector       xMatters Connector    12.1.0.1.0            Oracle      0.002       FCD7F48FED8DBA5CF7E0FA63D3601B91
-Rows:22`
+Rows:22
+```
 
 4. Apply the connector
 
