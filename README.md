@@ -9,9 +9,9 @@
 * xMatters account
 
 # Files
-* [Cloud Control Communication Plan](Cloud_Control_Communication_Plan.zip)
-* [xmatters_connector.jar](Oracle Connector Files/Connector JAR/xmatters_connector.jar)
-* [Cloud Control Communication Plan](Cloud Control Comunication.zip)
+* [Cloud_Control_Communication_Plan.zip](Cloud_Control_Communication_Plan.zip)
+* [xmatters_connector.jar](Connector_Files/Connector_JAR/xmatters_connector.jar)
+* [connector_manifest.xml](Connector_Files/Connector_Manifest/connector_manifest.xml)
 
 # How it works
 Incident Rules are configured from within Oracle Cloud Control to execute upon certain criteria. With the xMatters connector configured, the Incident Rules can be configured to execute a web service call to xMatters to create an Event for the associated Incident in Oracle Cloud Control.
