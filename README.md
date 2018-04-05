@@ -151,7 +151,7 @@ Update status is Applied.`
 Example Output:
 
 Notice you will find that the xMatters Connector is now applied
-
+```
 Status      Category              Type                  Version               Vendor      Size (MB)   Id
 Downloaded  Ticketing Connector   CASD No Publish Conn  12.1.0.2.0            Oracle      27.892      F8EF550F79F0CD897A3389A3F70DBBDD
                                   ector
@@ -185,7 +185,7 @@ Available   Event Connector       HP OMU Connector      12.1.0.2.0            Or
 Available   Ticketing Connector   CASD Connector        12.1.0.2.0            Oracle      27.895      04C466202A167B6DC254D203BAC1ED2E
 Applied     Event Connector       xMatters Connector    12.1.0.1.0            Oracle      0.002       FCD7F48FED8DBA5CF7E0FA63D3601B91
 Rows:22
-
+```
 
 ### Step 3: Configure the Connector
 3. Configure the emedk tool by following the instructions from EDK in the Cloud Control UI (Setup > Extensibility > Development Kit)
