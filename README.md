@@ -142,11 +142,14 @@ Archive created successfully: /u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollec
 ```
 
 3. Import the connector to Cloud Control  
+
 **Oracle Provided Example:**    
  `emcli import_update -file=\/u01/common/update1.zip\ -omslocal`
 
 **Working Example:**  
-`emcli import_update -file=\/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip -omslocal`
+```
+emcli import_update -file=\/u02/gc_inst/em/EMGC_OMS1/sysman/xMatterMgMtCollector/FCD7F48FED8DBA5CF7E0FA63D3601B91.zip -omslocal
+```
 
 **Working Example Result:**  
 ```
