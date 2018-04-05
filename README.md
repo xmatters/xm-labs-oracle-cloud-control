@@ -24,23 +24,15 @@ The following steps detail the process to configure the xMatters connector in Or
 
 1. In the Cloud Control UI, open the Extensibility Development Kit (EDK) by navigating to Setup > Extensibility > Development Kit.
 
-<kbd>
-  <img src="https://github.com/matthewhenry1/xm-labs-oracle-cloud-control/blob/master/media/setup_development_kit.png">
-</kbd>
-
+  ![Open Development Kit](media/setup_development_kit.png?raw=true)
 
 2. Note the requirements listed to use the EDK.
 
-<kbd>
-  <img src="https://github.com/matthewhenry1/xm-labs-oracle-cloud-control/blob/master/media/edk_req.png">
-</kbd>
-
+  ![EDK Requirements](media/edk_req.png?raw=true)
 
 3. Download the EDK to your server by following the steps listed under Deployment.
 
-<kbd>
-  <img src="https://github.com/matthewhenry1/xm-labs-oracle-cloud-control/blob/master/media/edk_deployment.png">
-</kbd>
+  ![EDK Deployment](media/edk_deployment.png?raw=true)
 
 4. Extract the schema files located in the **emMrsXsds.jar** file in the **emSDK** directory using the **jar** command.
 
