@@ -4,9 +4,7 @@
   ![Oracle Cloud Control Overview](media/cc_overview.png?raw=true)
 
 # Prerequisites
-* Oracle Enterprise Manager Cloud Control
-* Understanding of XML, XSD, and XSLT
-* xMatters account
+* Oracle Enterprise Manager Cloud Control 13c Release 2 Version 13.2.0.0.0
 
 # Files
 * [Cloud_Control_Communication_Plan.zip](Cloud_Control_Communication_Plan.zip)
