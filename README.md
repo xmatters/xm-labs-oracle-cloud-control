@@ -7,9 +7,9 @@
 * Oracle Enterprise Manager Cloud Control 13c Release 2 Version 13.2.0.0.0
 
 # Files
-* [Cloud_Control_Communication_Plan.zip](Cloud_Control_Communication_Plan.zip)
-* [xmatters_connector.jar](Connector_Files/Connector_JAR/xmatters_connector.jar)
-* [connector_manifest.xml](Connector_Files/Connector_Manifest/connector_manifest.xml)
+* [Cloud_Control_Communication_Plan.zip](Cloud_Control_Communication_Plan.zip)  - The xMatters Communication Plan
+* [xmatters_connector.jar](Connector_Files/Connector_JAR/xmatters_connector.jar)  - The JAR file required for Oracle Cloud Control
+* [connector_manifest.xml](Connector_Files/Connector_Manifest/connector_manifest.xml) - The connector manifest file to register the integration
 
 # How it works
 Incident Rules are configured from within Oracle Cloud Control to execute upon certain criteria. With the xMatters connector configured, the Incident Rules can be configured to execute a web service call to xMatters to create an Event for the associated Incident in Oracle Cloud Control.
@@ -328,10 +328,12 @@ If necessary to convert the integration to a Basic Authentication complete the f
 
 2. Open the `connectorDeploy.xml` and uncomment the lines for the authentication.
 
-3. Once uncommented compress all contents to a JAR file. Compressing to Jar file [reference]  (https://docs.oracle.com/javase/tutorial/deployment/jar/build.html).
+3. Once uncommented compress all contents to a JAR file. Compressing to Jar file [Reference](https://docs.oracle.com/javase/tutorial/deployment/jar/build.html).
 
+Example of the command to compress to a .jar file
+```
 jar cf xmatters_connector.jar connectorDeploy.xml createEvent_request_xmatters.xsl createEvent_response_xmatters.xsl updateEvent_request_xmatters.xsl updateEvent_response_xMatters.xsl
-
+```
 
 ## General Knowledge on Package Development
 
