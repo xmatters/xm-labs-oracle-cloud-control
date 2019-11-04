@@ -332,7 +332,7 @@ If necessary to convert the integration to a Basic Authentication complete the f
 
 Example of the command to compress to a .jar file
 ```
-jar cf xmatters_connector.jar connectorDeploy.xml createEvent_request_xmatters.xsl createEvent_response_xmatters.xsl updateEvent_request_xmatters.xsl updateEvent_response_xMatters.xsl
+jar cf xmatters_connector.jar connectorDeploy.xml createEvent_request_xmatters.xsl createEvent_response_xmatters.xsl updateEvent_request_xmatters.xsl updateEvent_response_xmatters.xsl
 ```
 
 ## General Knowledge on Package Development
