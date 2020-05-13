@@ -38,19 +38,19 @@ The following steps detail the process to configure the xMatters to integrate wi
 
 ### Assign permissions to the Workflow, Form, and Endpoint  
 1. **Workflow**  
-    * From within the Developer tab, select the Edit drop-down menu for the Cloud Control Workflow
+    * From within the Workflows page, select the Edit drop-down menu for the Cloud Control Workflow
     * From the Edit drop-down menu, select Access Permissions
     * From within Access Permissions, add the xMatters REST User created
 
 2. **Form**  
-    * From within the Developer tab, select the Edit drop-down menu for the Cloud Control Workflow
+    * From within the Workflows page, select the Edit drop-down menu for the Cloud Control Workflow
     * From the Edit drop-down menu, select Forms
     * From within Forms, select the Web Service drop-down menu for the Cloud Control form
     * From within Web Service drop-down menu, select Sender Permissions
     * From within Sender Permissions, add the xMatters REST User created
 
 3. **Endpoint**  
-    * From within the Developer tab, select the Edit drop-down menu for the Cloud Control Workflow
+    * From within the Workflows page, select the Edit drop-down menu for the Cloud Control Workflow
     * From the Edit drop-down menu, select Integration Builder
     * From within the Integration Builder tab, select Edit Endpoints
     * From within Edit Endpoints, add the xMatters REST User created
@@ -298,8 +298,8 @@ The integration is designed only as URL Authentication. See section below for Ba
 To populate the **createEvent** and **updateEvent** field, follow the next steps:
 1. Navigate to xMatters
 2. Login with as the newly created cloudcontrol Rest Web Service that was configured earlier. It is very imporant the user logins as the **cloudcontrol** user when using URL Authentication.
-3. Navigate to the Developer tab
-4. From within the Developer tab, select the Edit drop-down menu for the CloudControl Workflow
+3. Navigate to the Workflows page
+4. From within the Workflows page, select the Edit drop-down menu for the CloudControl Workflow
 5. From the Edit drop-down menu, select Integration Builder
 6. From within the Integration Builder tab, find the Inbound Integrations and select the **Primary Inbound Web Service**
 7. From within the Inbound Integrations page, ensure that URL Authentication is selected.
