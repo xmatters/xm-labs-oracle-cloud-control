@@ -3,11 +3,17 @@
 
   ![Oracle Cloud Control Overview](media/cc_overview.png?raw=true)
 
+<kbd>
+	<a href="https://support.xmatters.com/hc/en-us/community/topics">
+	   <img src="https://github.com/xmatters/xMatters-Labs/raw/master/media/disclaimer.png">
+	</a>
+</kbd>
+
 # Prerequisites
 * Oracle Enterprise Manager Cloud Control 13c Release 2 Version 13.2.0.0.0
 
 # Files
-* [Cloud_Control_Communication_Plan.zip](Cloud_Control_Communication_Plan.zip)  - The xMatters Communication Plan
+* [Cloud_Control.zip](Cloud_Control.zip)  - The xMatters Workflow
 * [xmatters_connector.jar](Connector_Files/Connector_JAR/xmatters_connector.jar)  - The JAR file required for Oracle Cloud Control
 * [connector_manifest.xml](Connector_Files/Connector_Manifest/connector_manifest.xml) - The connector manifest file to register the integration
 
@@ -18,11 +24,11 @@ Incident Rules are configured from within Oracle Cloud Control to execute upon c
 ## xMatters
 The following steps detail the process to configure the xMatters to integrate with Oracle Cloud Control.
 
-### Import the Communication Plan
-* Import the Cloud Control Communication Plan [Cloud_Control_Communication_Plan.zip](Cloud_Control_Communication_Plan.zip)
-* Instructions to import a Communication Plan can be found here: [Import a Communication Plan](http://help.xmatters.com/OnDemand/xmodwelcome/communicationplanbuilder/exportcommplan.htm)
+### Import the Workflow
+* Import the Cloud Control Workflow [Cloud_Control.zip](Cloud_Control.zip)
+* Instructions to import a Workflow can be found here: [Import a Workflow](http://help.xmatters.com/OnDemand/xmodwelcome/communicationplanbuilder/exportcommplan.htm)
 
-### Import Communication Plan
+### Import Workflow
 
 ### Create a REST user account
 * **First Name:** Cloud Control
@@ -30,21 +36,21 @@ The following steps detail the process to configure the xMatters to integrate wi
 * **User ID:** cloudcontrol
 * **Roles:** REST Web Service User, Developer
 
-### Assign permissions to the Communication Plan, Form, and Endpoint  
-1. **Communication Plan**  
-    * From within the Developer tab, select the Edit drop-down menu for the Cloud Control communication plan
+### Assign permissions to the Workflow, Form, and Endpoint  
+1. **Workflow**  
+    * From within the Developer tab, select the Edit drop-down menu for the Cloud Control Workflow
     * From the Edit drop-down menu, select Access Permissions
     * From within Access Permissions, add the xMatters REST User created
 
 2. **Form**  
-    * From within the Developer tab, select the Edit drop-down menu for the Cloud Control communication plan
+    * From within the Developer tab, select the Edit drop-down menu for the Cloud Control Workflow
     * From the Edit drop-down menu, select Forms
     * From within Forms, select the Web Service drop-down menu for the Cloud Control form
     * From within Web Service drop-down menu, select Sender Permissions
     * From within Sender Permissions, add the xMatters REST User created
 
 3. **Endpoint**  
-    * From within the Developer tab, select the Edit drop-down menu for the Cloud Control communication plan
+    * From within the Developer tab, select the Edit drop-down menu for the Cloud Control Workflow
     * From the Edit drop-down menu, select Integration Builder
     * From within the Integration Builder tab, select Edit Endpoints
     * From within Edit Endpoints, add the xMatters REST User created
@@ -293,7 +299,7 @@ To populate the **createEvent** and **updateEvent** field, follow the next steps
 1. Navigate to xMatters
 2. Login with as the newly created cloudcontrol Rest Web Service that was configured earlier. It is very imporant the user logins as the **cloudcontrol** user when using URL Authentication.
 3. Navigate to the Developer tab
-4. From within the Developer tab, select the Edit drop-down menu for the CloudControl communication plan
+4. From within the Developer tab, select the Edit drop-down menu for the CloudControl Workflow
 5. From the Edit drop-down menu, select Integration Builder
 6. From within the Integration Builder tab, find the Inbound Integrations and select the **Primary Inbound Web Service**
 7. From within the Inbound Integrations page, ensure that URL Authentication is selected.
